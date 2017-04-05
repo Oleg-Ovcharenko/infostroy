@@ -1,0 +1,40 @@
+{
+  "name": "currency_calc",
+  "version": "1.0.0",
+  "description": "Infostroy",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "devserver": "webpack-dev-server --debug --hot --devtool eval-source-map --output-pathinfo --watch --colors --inline --content-base dist --port 3000 --host 192.168.0.103"
+  },
+  "keywords": [
+    "Infostroy"
+  ],
+  "author": "Oleg Ovcharenko",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "reflux": "^6.4.1"
+  },
+  "devDependencies": {
+    "autoprefixer-loader": "^3.2.0",
+    "babel": "^6.23.0",
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.3.2",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.23.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.23.0",
+    "css-loader": "^0.26.2",
+    "file-loader": "^0.10.1",
+    "json-loader": "^0.5.4",
+    "node-sass": "^4.5.0",
+    "react-hot-loader": "^1.3.1",
+    "sass-loader": "^6.0.2",
+    "style-loader": "^0.13.2",
+    "url-loader": "^0.5.8",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.1"
+  }
+}
