@@ -3,24 +3,34 @@ import Reflux  from 'reflux';
 import Store   from '../stores/AppStore.jsx';
 import Actions from '../actions/Actions.jsx';
 
+import ModalClose from './ModalClose.jsx';
+import ModalSave  from './ModalSave.jsx';
+
 require('./Modal.scss');
 
-export default class Canvas extends Reflux.Component {
+export default class Modal extends Reflux.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+        modalText: ''
+    };
     this.store = Store;
+    this.modalText = this.modalText.bind(this);
+  }
+
+  modalText(e) {
+    this.setState({ modalText: e.target.value});
   }
 
   render() {
     return (
-        <div className="modal_window">
+        <div className="modal_window" style={{display: this.state.modalWindow ? 'block' : 'none'}}>
             <div className="modal_window__block">
-                <h3 className="modal_window__header">Change tag text</h3>
-                <textarea className="modal_window__textarea"></textarea><br/>
+                <h3 className="modal_window__header">Tag text</h3>
+                <textarea onChange={this.modalText} className="modal_window__textarea" value={this.state.modalText}></textarea><br/>
                 <div className="modal_window__buttons">
-                    <button className="modal_window__button modal_window__cancel">Cancel</button>
-                    <button className="modal_window__button modal_window__save">Save</button>
+                    <ModalClose />
+                    <ModalSave saveText={this.state.modalText} />
                 </div>
             </div>
         </div>

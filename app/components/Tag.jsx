@@ -1,19 +1,26 @@
 import React   from 'react';
 import Reflux  from 'reflux';
-//import Store   from '../stores/AppStore.jsx';
+import Store   from '../stores/AppStore.jsx';
 import Actions from '../actions/Actions.jsx';
 
 export default class Tags extends Reflux.Component {
   constructor(props) {
     super(props);
     this.state = {
-        text: props.text
+        text: props.text,
+        tagId: props.tagId,
     };
+    this.store = Store;
+    this.selectTag = this.selectTag.bind(this);
+  }
+
+  selectTag(e) {
+    Actions.select_tag(this.state.tagId);
   }
 
   render() {
     return (
-        <div className="tags__tag">{this.state.text}</div>
+        <div onClick={this.selectTag} className={this.props.active ? "tags__tag tags__tag--active" : "tags__tag"}>{this.state.text}</div>
     );
   }
 };

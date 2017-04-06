@@ -8,20 +8,23 @@ require('./Note.scss');
 export default class Note extends Reflux.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      note: this.props.tagId
+    };
     this.store = Store;
     this.changeNoteText = this.changeNoteText.bind(this);
   }
 
   changeNoteText() {
-      alert('Сделай изменениие при клике по Note');
+      Actions.select_note(this.state.note);
   }
 
   render() {
+    let activeNote = this.props.noteActive ? .9 : .5;
     let coordinates = {
         top: this.props.top,
         left: this.props.left,
-        opacity: .6
+        opacity: activeNote
     };
     return (
         <div onClick={this.changeNoteText} style={coordinates} className="canvas_img__note"></div>

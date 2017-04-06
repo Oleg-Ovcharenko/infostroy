@@ -233,6 +233,9 @@ body, html, #mount-point, .app {
     margin-top: 20px;
     width: 50%;
     margin-right: 8px;
+    &:hover {
+      background-color: darken(rgba(25, 37, 51, 0.5), 7%);
+    }
   }
 
   &__drop_text {

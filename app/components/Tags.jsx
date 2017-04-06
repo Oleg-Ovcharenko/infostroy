@@ -26,10 +26,9 @@ export default class Tags extends Reflux.Component {
           <div className="tags__bar">
             {
               this.state.tags.map(function(item) {
-                return <Tag key={item.id} text={item.text} />
+                return <Tag key={item.id} tagId={item.id} active={item.active} text={item.text} />
               })
             }
-            <div className="tags__tag tags__tag--active">Adipisicing laboriosam animi sit reiciendis sed. Dolor fuga.</div>
           </div>
         </aside>
     );
