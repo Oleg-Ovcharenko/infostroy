@@ -3,7 +3,7 @@ import Reflux  from 'reflux';
 import Store   from '../stores/AppStore.jsx';
 import Actions from '../actions/Actions.jsx';
 
-require('./Tags.scss');
+require('./Tag.scss');
 
 export default class Tags extends Reflux.Component {
   constructor(props) {

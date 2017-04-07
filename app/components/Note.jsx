@@ -11,6 +11,7 @@ export default class Note extends Reflux.Component {
     this.state = {
       note: this.props.tagId
     };
+    
     this.store = Store;
     this.changeNoteText = this.changeNoteText.bind(this);
   }

@@ -47,34 +47,34 @@
   }
 
   &__home_item {
-    background-image: url("/img/menu_home.svg");
+    background-image: url("../img/menu_home.svg");
     background-size: 26px 25px;
     &:hover {
-      background-image: url("/img/menu_home--hover.svg");
+      background-image: url("../img/menu_home--hover.svg"); 
     }
   }
 
   &__messages_item {
-    background-image: url("/img/menu_message.svg");
+    background-image: url("../img/menu_message.svg");
     background-size: 26px 26px;
     position: relative;
 
     &:hover {
-      background-image: url("/img/menu_message--hover.svg");
+      background-image: url("../img/menu_message--hover.svg");
     }
   }
 
   &__image_item {
-    background-image: url("/img/menu_image.svg");
+    background-image: url("../img/menu_image.svg");
     background-size: 27px 27px;
 
     &:hover {
-      background-image: url("/img/menu_image--hover.svg");
+      background-image: url("../img/menu_image--hover.svg");
     }
   }
 
   &__item--active > span {
-    background-image: url("/img/menu_image--hover.svg");
+    background-image: url("../img/menu_image--hover.svg");
   }
 
   &__messages {

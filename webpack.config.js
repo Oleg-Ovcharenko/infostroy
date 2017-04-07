@@ -1,4 +1,5 @@
 var webpack = require('webpack');
+var UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
     entry: "./app/main.js",
@@ -23,20 +24,10 @@ module.exports = {
                 loader: "style-loader!css-loader!autoprefixer-loader!sass-loader",
                 exclude: [/node_modules/, /dist/]
             }, {
-                test: /\.gif$/,
-                loader: "url-loader?limit=10000&mimetype=image/gif"
-            }, {
-                test: /\.jpg$/,
-                loader: "url-loader?limit=10000&mimetype=image/jpg"
-            }, {
-                test: /\.png$/,
-                loader: "url-loader?limit=10000&mimetype=image/png"
-            }, {
-                test: /\.svg/,
-                loader: "url-loader?limit=26000&mimetype=image/svg+xml"
-            }, {
-                test: /\.(otf|eot|svg|ttf|woff)/,
-                loader: 'url-loader?limit=8192'
+                test: /\.woff2?$|\.ttf$|\.eot$|\.svg$|\.png|\.jpe?g|\.gif$/,
+                loader: 'file-loader',
+                exclude: [/node_modules/, /dist/]
+
             }, {
                 test: /\.jsx$/,
                 loaders: ['react-hot-loader', 'babel-loader?presets[]=es2015,presets[]=react,plugins[]=transform-runtime'],
@@ -47,4 +38,17 @@ module.exports = {
             }
         ]
     },
+    
+    plugins: [
+        new webpack.DefinePlugin({
+            'process.env':{
+                'NODE_ENV': JSON.stringify('production')
+            }
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            compress:{
+                warnings: true
+            }
+        })
+    ]
 }
