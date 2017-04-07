@@ -46,5 +46,5 @@ $ npm run devserver
 
 Когда запустится сервер в браузере переходим по адресу
 ```sh
-http://localhost:3000
+http://localhost:3333
 ```
