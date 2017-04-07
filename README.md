@@ -1,4 +1,4 @@
-# Задание lemarbet. Верстка макета.
+# Infostroy React App
 
 **ФИО:** Овчаренко Олег Игоревич
 
@@ -9,7 +9,7 @@
 **skype:** oleg.enzo
 
 ***
-#### Ссылка на выполненную работу: https://oleg-ovcharenko.github.io/lemarbetpage.github.io/
+#### Ссылка на выполненную работу: https://oleg-ovcharenko.github.io/infostroy.github.io/
 ***
 
 ### Что было сделано
@@ -20,6 +20,7 @@
   - добавление изображения путем нажатия на Browse
   - retina ready
   - картинки сжаты (minimage) в gulp
+  - bundle сжат
 
 ### Трудности 
   - было бы круто если дизайнер прикладывал бы шрифты к макету (Это существенно помогло бы ускорить работу)
@@ -33,14 +34,14 @@
 
 ### Скачать и запустить webpack проект
 
->Ссылка на выполненную работу: https://oleg-ovcharenko.github.io/lemarbetpage.github.io/
+>Ссылка на выполненную работу: https://oleg-ovcharenko.github.io/infostroy.github.io/
 
 Сколнируйте git репозиторий в котором велась разработка
 ```sh
-$ git clone https://github.com/Oleg-Ovcharenko/lemarbet.git
-$ cd lemarbet
-$ npm install
-$ gulp
+$ git clone https://github.com/Oleg-Ovcharenko/infostroy.git
+$ cd infostroy
+$ sudo npm install
+$ npm run devserver
 ```
 
 Когда запустится сервер в браузере переходим по адресу
