@@ -1,0 +1,49 @@
+@import "../scss/_fonts.scss";
+@import "../scss/_variables.scss";
+@import "../scss/_settings.scss";
+@import "../scss/_gui.scss";
+
+// ===== header ===== //
+
+.header {
+  &__search {
+    box-sizing: border-box;
+    height: 33px;
+    border-radius: 16px;
+    outline: none;
+    padding: 0 38px;
+    border: none;
+    color: $col-header-search-font;
+    background-color: $col-header-search-bg;
+    font-style: italic;
+    line-height: 18px;
+    box-shadow: 1px 1px 0 rgba(255, 255, 255, 0.26), inset 1px 1px 5px rgba(1, 2, 2, 0.21);
+    position: relative;
+    font-family: $font-opensans;
+    @include bg-gradient(to top, #1b2734, 0%, #152230, 100%);
+    font-size: 14px;
+    width: 100%;
+  }
+
+  &__search_container {
+    position: relative;
+    margin-top: 22px;
+    width: 50%;
+    margin-left: 8px;
+    &:after {
+      content: "";
+      display: inline-block;
+      position: absolute;
+      width: 17px;
+      height: 18px;
+      position: absolute;
+      background: url("/img/search_icon.png");
+      background-size: 17px 18px;
+      background-position: 0 center;
+      background-repeat: no-repeat;
+      height: 31px;
+      top: 0;
+      left: 13px;
+    }
+  }
+}

@@ -3,6 +3,8 @@ import Reflux  from 'reflux';
 import Store   from '../stores/AppStore.jsx';
 import Actions from '../actions/Actions.jsx';
 
+require('./Menu.scss');
+
 export default class Menu extends Reflux.Component {
   constructor(props) {
     super(props);

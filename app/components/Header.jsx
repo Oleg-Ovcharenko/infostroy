@@ -6,6 +6,8 @@ import Actions   from '../actions/Actions.jsx';
 import DropZone  from './DropZone.jsx'
 import Search    from './Search.jsx'
 
+require('./Header.scss');
+
 export default class Header extends Reflux.Component {
   constructor(props) {
     super(props);

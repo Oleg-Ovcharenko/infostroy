@@ -19,3 +19,4 @@ export default class ModalClose extends Reflux.Component {
     );
   }
 };
+  

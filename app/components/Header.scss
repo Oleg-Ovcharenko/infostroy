@@ -1,0 +1,51 @@
+@import "../scss/_fonts.scss";
+@import "../scss/_variables.scss";
+@import "../scss/_settings.scss";
+@import "../scss/_gui.scss";
+
+// ===== header ===== //
+
+.header {
+  @include bg-gradient(to top, #243241, 0%, #2a3e52, 100%);
+  @include header-bg-shadow;
+
+  height: 80px;
+  width: 100%;
+  box-sizing: border-box;
+  border-bottom: 1px solid #172431;
+  border-top: 1px solid #172431;
+  position: fixed;
+  z-index: 9999;
+  padding: 0 75px 0 15px;
+  display: flex;
+
+  &__inputs {
+    width: 100%;
+    display: flex;
+    box-sizing: border-box;
+    padding-right: 15px;
+  }
+
+  &__log_in {
+    width: 195px;
+    position: relative;
+  }
+
+  &__log_in_link {
+    font-size: 18px;
+    font-family: $font-opensans;
+    text-decoration: none;
+    display: inline-block;
+    width: 89px;
+    height: 27px;
+    background: url("/img/log_in.png");
+    background-size: 89px 27px;
+    position: absolute;
+    top: 25px;
+    right: 10px;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}

@@ -1,0 +1,36 @@
+@import "../scss/_fonts.scss";
+@import "../scss/_variables.scss";
+@import "../scss/_settings.scss";
+@import "../scss/_gui.scss";
+
+// ===== tags ===== //
+
+.tags {
+  width: 218px;
+  background-color: $col-tags-bg;
+  box-sizing: border-box;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  padding-bottom: 48px;
+
+  &__settings {
+    border-bottom: 1px solid $col-tag-border;
+    padding: 14px 13px 15px 13px;
+    box-sizing: border-box;
+    font-family: $font-opensans;
+    font-size: 12px;
+    color: $col-tag-font;
+    font-weight: 700;
+    width: 100%;
+  }
+
+  &__all_radio {
+    margin-left: 18px;
+  }
+
+  &__bar {
+    height: 100%;
+    overflow: auto;
+  }
+}

@@ -5,6 +5,8 @@ import Actions from '../actions/Actions.jsx';
 
 import Tag    from './Tag.jsx';
 
+require('./Tags.scss');
+
 export default class Tags extends Reflux.Component {
   constructor(props) {
     super(props);

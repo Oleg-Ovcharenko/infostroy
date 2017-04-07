@@ -1,0 +1,31 @@
+@import "../scss/_fonts.scss";
+@import "../scss/_variables.scss";
+@import "../scss/_settings.scss";
+@import "../scss/_gui.scss";
+
+// ===== tags ===== //
+
+.tags {
+  &__tag {
+    border-bottom: 1px solid $col-tag-border;
+    padding: 13px 13px 13px 35px;
+    font-family: $font-opensans;
+    font-size: 12px;
+    color: $col-tag-font;
+    background-image: url("/img/tag.png");
+    background-size: 12px 13px;
+    background-repeat: no-repeat;
+    background-position: 15px 17px;
+    box-sizing: border-box;
+
+    &:hover {
+      background-color: $col-tag-bg--active;
+      cursor: pointer;
+    }
+
+    &--active {
+      background-color: $col-tag-bg--active;
+      color: $col-tag-font--active;
+    }
+  }
+}

@@ -3,11 +3,13 @@ import Reflux  from 'reflux';
 import Store   from '../stores/AppStore.jsx';
 import Actions from '../actions/Actions.jsx';
 
+require('./Tags.scss');
+
 export default class Tags extends Reflux.Component {
   constructor(props) {
     super(props);
     this.state = {
-        text: props.text,
+        text: props.text, 
         tagId: props.tagId,
     };
     this.store = Store;

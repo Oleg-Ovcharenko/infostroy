@@ -1,3 +1,48 @@
-.drop_zone {
-    z-index: 99999;
+@import "../scss/_fonts.scss";
+@import "../scss/_variables.scss";
+@import "../scss/_settings.scss";
+@import "../scss/_gui.scss";
+  
+.header {
+    &__drop_container {
+        font-size: 14px;
+        text-align: center;
+        color: $col-header-drop-font;
+        font-family: $font-opensans;
+        box-sizing: border-box;
+        border: 1px dashed $col-header-drop-border;
+        height: 33px;
+        background-color: rgba(25, 37, 51, 0.5);
+        line-height: 31px;
+        border-radius: 18px;
+        margin-top: 20px;
+        width: 50%;
+        margin-right: 8px;
+        &:hover {
+        background-color: darken(rgba(25, 37, 51, 0.5), 7%);
+        }
+    }
+
+    &__drop_text {
+        background-image: url("/img/drop_icon.png");
+        background-size: 20px 16px;
+        background-repeat: no-repeat;
+        background-position: 0 center;
+        height: 100%;
+        padding-left: 25px;
+        display: inline-block;
+    }
+
+    &__file_input {
+        color: $col-header-drop-browse;
+        cursor: pointer;
+
+        &:hover {
+        text-decoration: underline;
+        }
+    }
+
+    .drop_zone {
+        z-index: 99999;
+    }
 }

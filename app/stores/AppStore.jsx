@@ -2,23 +2,17 @@ var Reflux = require('reflux');
 var Actions = require('../actions/Actions.jsx');
 
 let TAGS = [];
-let TAG = {
-  id: 0,
-  text: '',
-  active: false,
-  coordinates: {
-    top: '',
-    left: ''
-  }  
-};
 
 class AppStore extends Reflux.Store {
   constructor() {
     super();
     this.state = {
-      tags: [],           // Теги в правой части экрана 
-      files: "",          // Файо после drug and drop
-      modalWindow: false  // Открытое либо закрытое модальное окно
+      tags: [],            // Теги в правой части экрана 
+      files: '',           // Файо после drug and drop
+      modalWindow: false,  // Открытое либо закрытое модальное окно
+      modalText: '',
+      topTag: 0,
+      leftTag: 0
     };
 
     this.listenTo(Actions.search, this.search);
@@ -28,41 +22,67 @@ class AppStore extends Reflux.Store {
     this.listenTo(Actions.add_note, this.addNote);
     this.listenTo(Actions.modal_close, this.modalClose);
     this.listenTo(Actions.modal_save, this.modalSave);
+    this.listenTo(Actions.modal_text_input, this.modalTexInput);
+  }
+
+  modalTexInput(text){
+      this.setState({
+        modalText: text
+      })   
   }
 
   modalSave(modalText) {
 
-    console.log(TAG.id + 1);
+    if(modalText.length === 0) {
+      this.setState({
+        tags: TAGS,
+        modalWindow: false
+      })
+      return;
+    }
 
-    TAG.id = TAG.id + 1;
+    let TAG = {
+      id: 0,
+      text: '',
+      active: false,
+      coordinates: {
+        top: '',
+        left: ''
+      }  
+    };
+
+    TAG.id = TAGS.length + 1;
     TAG.text = modalText;
-    TAG.active = true;
-    
-    TAGS.push(TAG);
+    TAG.active = false;
+    TAG.coordinates.top = this.state.topTag;
+    TAG.coordinates.left= this.state.leftTag;
 
-    console.log(TAGS);
+    TAGS.push(TAG);
 
     this.setState({
       tags: TAGS,
+      modalText: '',
       modalWindow: false
     })
   }
 
   modalClose() {
     this.setState({
-      modalWindow: false
+      modalWindow: false,
+      modalText: ''
     })   
   }
 
   addNote(x, y) {
-    TAG.coordinates.top = y + 'px';
-    TAG.coordinates.left = x + 'px';
     this.setState({
+      topTag: y -25 + 'px',
+      leftTag: x -12 + 'px',
       modalWindow: true
     })
   }
 
   dropImg(files) {
+    TAGS.length = 0;
     this.setState({
       files: files,
       tags: []
@@ -81,7 +101,7 @@ class AppStore extends Reflux.Store {
     });
   }
 
-  selectTag(id) {
+  selectTagOrNote(id) {
     let tags = this.state.tags;
     tags.map(function(el){
       if(el.id == id) {
@@ -91,25 +111,18 @@ class AppStore extends Reflux.Store {
         el.active = false;
       }
     });
+    return tags;
+  }
 
+  selectTag(id) {
     this.setState ({
-      tags: tags
+      tags: this.selectTagOrNote(id)
     });
   }
 
   selectNote(id) {
-    let tags = this.state.tags;
-    tags.map(function(el){
-      if(el.id == id) {
-        el.active = true; 
-      }
-      if(el.active == true && el.id != id) {
-        el.active = false;
-      }
-    });
-
     this.setState ({
-      tags: tags
+      tags: this.selectTagOrNote(id)
     });
   }
 }

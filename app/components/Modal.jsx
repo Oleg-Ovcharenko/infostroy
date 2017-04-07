@@ -11,15 +11,12 @@ require('./Modal.scss');
 export default class Modal extends Reflux.Component {
   constructor(props) {
     super(props);
-    this.state = {
-        modalText: ''
-    };
     this.store = Store;
     this.modalText = this.modalText.bind(this);
   }
 
   modalText(e) {
-    this.setState({ modalText: e.target.value});
+    Actions.modal_text_input(e.target.value);
   }
 
   render() {
