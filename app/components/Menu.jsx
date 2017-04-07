@@ -8,9 +8,6 @@ require('./Menu.scss');
 export default class Menu extends Reflux.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      icurrencies: []
-    };
   }
 
   render() {

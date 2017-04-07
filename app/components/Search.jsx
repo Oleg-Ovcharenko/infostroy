@@ -24,7 +24,11 @@ export default class Search extends Reflux.Component {
   render() {
     return (
         <div className="header__search_container">
-            <input className="header__search" type="search" value={this.state.searchText} onChange={this.onInputSearch} placeholder="Search" />
+            <input className="header__search" 
+                   type="search" 
+                   value={this.state.searchText} 
+                   onChange={this.onInputSearch} 
+                   placeholder="Search" />
         </div>
     );
   }

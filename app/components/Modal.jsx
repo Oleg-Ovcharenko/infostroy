@@ -24,7 +24,9 @@ export default class Modal extends Reflux.Component {
         <div className="modal_window" style={{display: this.state.modalWindow ? 'block' : 'none'}}>
             <div className="modal_window__block">
                 <h3 className="modal_window__header">Tag text</h3>
-                <textarea onChange={this.modalText} className="modal_window__textarea" value={this.state.modalText}></textarea><br/>
+                <textarea onChange={this.modalText} 
+                          className="modal_window__textarea" 
+                          value={this.state.modalText}></textarea><br/>
                 <div className="modal_window__buttons">
                     <ModalClose />
                     <ModalSave saveText={this.state.modalText} />

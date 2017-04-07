@@ -11,9 +11,6 @@ require('./Header.scss');
 export default class Header extends Reflux.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      icurrencies: []
-    };
   }
 
   render() {
