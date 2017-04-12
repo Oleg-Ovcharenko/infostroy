@@ -1,7 +1,8 @@
-import React   from 'react';
-import Reflux  from 'reflux';
-import Store   from '../stores/AppStore.jsx';
-import Actions from '../actions/Actions.jsx';
+import React    from 'react';
+import Reflux   from 'reflux';
+import ReactDOM from 'react-dom';
+import Store    from '../stores/AppStore.jsx';
+import Actions  from '../actions/Actions.jsx';
 
 import ModalClose from './ModalClose.jsx';
 import ModalSave  from './ModalSave.jsx';
@@ -13,20 +14,35 @@ export default class Modal extends Reflux.Component {
     super(props);
     this.store = Store;
     this.modalText = this.modalText.bind(this);
+    this.coloseModalWindow = this.coloseModalWindow.bind(this);
   }
 
   modalText(e) {
     Actions.modal_text_input(e.target.value);
   }
 
+  coloseModalWindow() {
+    let modalDarkBg = ReactDOM.findDOMNode(this.refs.modal_dark);
+    modalDarkBg.onclick = (event) => {
+      if(event.target.className === 'modal_window') {
+        Actions.modal_close();
+      }
+    }
+  }
+
+  componentDidMount() {
+    this.coloseModalWindow();
+  }
+
   render() {
     return (
-        <div className="modal_window" style={{display: this.state.modalWindow ? 'block' : 'none'}}>
+        <div ref="modal_dark" className="modal_window" style={{display: this.state.modalWindow ? 'block' : 'none'}}>
             <div className="modal_window__block">
                 <h3 className="modal_window__header">Tag text</h3>
                 <textarea onChange={this.modalText} 
                           className="modal_window__textarea" 
-                          value={this.state.modalText}></textarea><br/>
+                          value={this.state.modalText}
+                          autoFocus></textarea><br/>
                 <div className="modal_window__buttons">
                     <ModalClose />
                     <ModalSave saveText={this.state.modalText} />

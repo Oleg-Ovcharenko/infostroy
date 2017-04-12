@@ -8,7 +8,7 @@
 .tags {
   &__tag {
     border-bottom: 1px solid $col-tag-border;
-    padding: 13px 13px 13px 35px;
+    padding: 13px 18px 13px 35px;
     font-family: $font-opensans;
     font-size: 12px;
     color: $col-tag-font;
@@ -17,15 +17,37 @@
     background-repeat: no-repeat;
     background-position: 15px 14px;
     box-sizing: border-box;
-
+    position: relative;
     &:hover {
       background-color: $col-tag-bg--active;
       cursor: pointer;
+    }
+    &:hover &_close {
+      display: block;
     }
 
     &--active {
       background-color: $col-tag-bg--active;
       color: $col-tag-font--active;
+    }
+  }
+  &__tag_close {
+    content: '';
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    line-height: 16px;
+    text-align: center;
+    z-index: 99999;
+    font-size: 21px;
+    position: absolute;
+    right: 5px;
+    top: 10px;
+    color: darken(#f1402c, 5%);
+    display: none;
+    &:hover {
+      color: darken(#f1402c, 20%);
+      cursor: pointer;
     }
   }
 }

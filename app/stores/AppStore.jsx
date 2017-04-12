@@ -1,5 +1,5 @@
-var Reflux = require('reflux');
-var Actions = require('../actions/Actions.jsx');
+import Reflux  from 'reflux';
+import Actions from '../actions/Actions.jsx';
 
 let TAGS = [];
 
@@ -18,6 +18,7 @@ class AppStore extends Reflux.Store {
     this.listenTo(Actions.search, this.search);
     this.listenTo(Actions.select_tag, this.selectTag);
     this.listenTo(Actions.select_note, this.selectNote);
+    this.listenTo(Actions.delete_tag, this.deleteTag);
     this.listenTo(Actions.drop, this.dropImg);
     this.listenTo(Actions.add_note, this.addNote);
     this.listenTo(Actions.modal_close, this.modalClose);
@@ -91,7 +92,7 @@ class AppStore extends Reflux.Store {
 
   search(words) {
     let searchQuery = words.toLowerCase();
-    let displayTags = TAGS.filter(function(el) {
+    let displayTags = TAGS.filter((el) => {
       let searchValue = el.text.toLowerCase();
       return searchValue.indexOf(searchQuery) !== -1;
     });
@@ -112,6 +113,22 @@ class AppStore extends Reflux.Store {
       }
     });
     return tags;
+  }
+
+  deleteTag(id, text) {
+    let deleteMessage = confirm('TAG: ' + text + " WILL BE DELETED!");
+    let tagIndex;
+    if(deleteMessage) {
+      TAGS.forEach((item, i, TAGS) => {
+        if(item.id == id) {
+          tagIndex = i;
+        }
+      });
+      TAGS.splice(tagIndex,1);
+    }
+    this.setState({
+      tags: TAGS
+    })
   }
 
   selectTag(id) {

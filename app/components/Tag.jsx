@@ -14,15 +14,23 @@ export default class Tags extends Reflux.Component {
     };
     this.store = Store;
     this.selectTag = this.selectTag.bind(this);
+    this.deleteTag = this.deleteTag.bind(this);
   }
 
-  selectTag(e) {
+  selectTag() {
     Actions.select_tag(this.state.tagId);
+  }
+
+  deleteTag() {
+    Actions.delete_tag(this.state.tagId, this.state.text);
   }
 
   render() {
     return (
-        <div onClick={this.selectTag} className={this.props.active ? "tags__tag tags__tag--active" : "tags__tag"}>{this.state.text}</div>
+        <div onClick={this.selectTag} className={this.props.active ? "tags__tag tags__tag--active" : "tags__tag"}>
+          <span onClick={this.deleteTag} className="tags__tag_close">×</span>
+          {this.state.text}
+        </div>
     );
   }
 };
