@@ -10,9 +10,6 @@ require('./Tags.scss');
 export default class Tags extends Reflux.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      icurrencies: []
-    },
     this.store = Store;
   }
 

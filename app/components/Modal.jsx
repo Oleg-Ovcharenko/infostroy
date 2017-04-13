@@ -15,6 +15,7 @@ export default class Modal extends Reflux.Component {
     this.store = Store;
     this.modalText = this.modalText.bind(this);
     this.coloseModalWindow = this.coloseModalWindow.bind(this);
+    this.sendOrCloseModal = this.sendOrCloseModal.bind(this);
   }
 
   modalText(e) {
@@ -34,12 +35,22 @@ export default class Modal extends Reflux.Component {
     this.coloseModalWindow();
   }
 
+  sendOrCloseModal(e) {
+    if(e.keyCode === 27) {
+      Actions.modal_close();
+    }
+    if(e.keyCode === 13) {
+      Actions.modal_save(this.state.modalText);
+    }
+  }
+
   render() {
     return (
         <div ref="modal_dark" className="modal_window" style={{display: this.state.modalWindow ? 'block' : 'none'}}>
             <div className="modal_window__block">
                 <h3 className="modal_window__header">Tag text</h3>
-                <textarea onChange={this.modalText} 
+                <textarea onKeyDown={this.sendOrCloseModal}
+                          onChange={this.modalText} 
                           className="modal_window__textarea" 
                           value={this.state.modalText}
                           autoFocus></textarea><br/>

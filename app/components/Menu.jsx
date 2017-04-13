@@ -2,7 +2,6 @@ import React   from 'react';
 import Reflux  from 'reflux';
 import Store   from '../stores/AppStore.jsx';
 import Actions from '../actions/Actions.jsx';
-import { Router, Route, hashHistory, Link, IndexLink, IndexRoute } from 'react-router';
 
 require('./Menu.scss');
 

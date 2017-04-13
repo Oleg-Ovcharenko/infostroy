@@ -10,15 +10,18 @@ class AppStore extends Reflux.Store {
       tags: [],            // Теги в правой части экрана 
       files: '',           // Файо после drug and drop
       modalWindow: false,  // Открытое либо закрытое модальное окно
-      modalText: '',
-      topTag: 0,
-      leftTag: 0
+      modalText: '',       // Текст в модальном окне
+      editTag: false,      // Запрос на редактирование ?
+      editTagId: 0,        // id Редактируемого тега
+      topTag: 0,           // Координаты тега свергу
+      leftTag: 0           // Координаты иега снизу
     };
 
     this.listenTo(Actions.search, this.search);
+    this.listenTo(Actions.edit_tag, this.editTag);
+    this.listenTo(Actions.delete_tag, this.deleteTag);
     this.listenTo(Actions.select_tag, this.selectTag);
     this.listenTo(Actions.select_note, this.selectNote);
-    this.listenTo(Actions.delete_tag, this.deleteTag);
     this.listenTo(Actions.drop, this.dropImg);
     this.listenTo(Actions.add_note, this.addNote);
     this.listenTo(Actions.modal_close, this.modalClose);
@@ -34,7 +37,7 @@ class AppStore extends Reflux.Store {
 
   modalSave(modalText) {
 
-    if(modalText.length === 0) {
+    if(modalText.length === 0) {                          // Если пришел пустой запрос
       this.setState({
         tags: TAGS,
         modalWindow: false
@@ -42,7 +45,7 @@ class AppStore extends Reflux.Store {
       return;
     }
 
-    let TAG = {
+    let TAG = {                                           // Пустой объект на добавление
       id: 0,
       text: '',
       active: false,
@@ -52,18 +55,27 @@ class AppStore extends Reflux.Store {
       }  
     };
 
-    TAG.id = TAGS.length + 1;
-    TAG.text = modalText;
-    TAG.active = false;
-    TAG.coordinates.top = this.state.topTag;
-    TAG.coordinates.left= this.state.leftTag;
+    if(this.state.editTag === true) {                      // Если не добавление тега, а его редактирование
+      for(let i = 0; i < TAGS.length; i++) {
+        if(TAGS[i].id == this.state.editTagId) {
+          TAGS[i].text = modalText;
+        }
+      }
+    } else {                                               // Если добавление тега
+      TAG.id = TAGS.length + 1;
+      TAG.text = modalText;
+      TAG.active = false;
+      TAG.coordinates.top = this.state.topTag;
+      TAG.coordinates.left= this.state.leftTag;
 
-    TAGS.push(TAG);
+      TAGS.push(TAG);
+    }
 
     this.setState({
       tags: TAGS,
       modalText: '',
-      modalWindow: false
+      modalWindow: false,
+      editTag: false
     })
   }
 
@@ -113,6 +125,15 @@ class AppStore extends Reflux.Store {
       }
     });
     return tags;
+  }
+
+  editTag(id, text) {
+    this.setState({
+      modalText: text,
+      modalWindow: true,
+      editTag: true,
+      editTagId: id
+    })
   }
 
   deleteTag(id, text) {
