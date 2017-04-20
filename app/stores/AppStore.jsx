@@ -37,7 +37,7 @@ class AppStore extends Reflux.Store {
 
   modalSave(modalText) {
 
-    if(modalText.length === 0) {                          // Если пришел пустой запрос
+    if(modalText.length === 0) {                            // Если пришел пустой запрос
       this.setState({
         tags: TAGS,
         modalWindow: false
@@ -45,7 +45,7 @@ class AppStore extends Reflux.Store {
       return;
     }
 
-    let TAG = {                                           // Пустой объект на добавление
+    let TAG = {                                             // Пустой объект на добавление
       id: 0,
       text: '',
       active: false,
@@ -102,6 +102,8 @@ class AppStore extends Reflux.Store {
     })
   }
 
+  /* ===== поиск ===== */
+  
   search(words) {
     let searchQuery = words.toLowerCase();
     let displayTags = TAGS.filter((el) => {
