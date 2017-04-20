@@ -158,6 +158,8 @@ class AppStore extends Reflux.Store {
     })
   }
 
+  /*===== select Tag =====*/
+
   selectTag(id) {
     this.setState ({
       tags: this.selectTagOrNote(id)
