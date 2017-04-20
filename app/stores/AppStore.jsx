@@ -102,7 +102,7 @@ class AppStore extends Reflux.Store {
     })
   }
 
-  /* ===== поиск ===== */
+  /*===== поиск =====*/
 
   search(words) {
     let searchQuery = words.toLowerCase();
@@ -129,7 +129,7 @@ class AppStore extends Reflux.Store {
     return tags;
   }
 
-  /* ===== edit tag =====*/
+  /*===== edit tag =====*/
 
   editTag(id, text) {
     this.setState({
@@ -139,6 +139,8 @@ class AppStore extends Reflux.Store {
       editTagId: id
     })
   }
+
+  /*===== delete tag =====*/
 
   deleteTag(id, text) {
     let deleteMessage = confirm('TAG: ' + text + " WILL BE DELETED!");
@@ -155,6 +157,8 @@ class AppStore extends Reflux.Store {
       tags: TAGS
     })
   }
+
+  /*===== select Tag =====*/
 
   selectTag(id) {
     this.setState ({
