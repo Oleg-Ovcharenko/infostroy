@@ -103,7 +103,7 @@ class AppStore extends Reflux.Store {
   }
 
   /* ===== поиск ===== */
-  
+
   search(words) {
     let searchQuery = words.toLowerCase();
     let displayTags = TAGS.filter((el) => {
@@ -128,6 +128,8 @@ class AppStore extends Reflux.Store {
     });
     return tags;
   }
+
+  /* ===== edit tag =====*/
 
   editTag(id, text) {
     this.setState({
