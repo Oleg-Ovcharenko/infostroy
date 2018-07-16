@@ -2,9 +2,7 @@
 
 **ФИО:** Овчаренко Олег Игоревич
 
-**Электронная почта:** oleg-enzo@yandex.ua
-
-**Телефон:** +380637284070
+**Электронная почта:** oleshka.ovcharenko@gmail.com
 
 **skype:** oleg.enzo
 
